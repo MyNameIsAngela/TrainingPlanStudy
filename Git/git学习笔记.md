@@ -6,7 +6,7 @@
 
 ## 一、起步##
 
-#### 1.git有三种状态####
+###1.git有三种状态###
 
 | 已提交 committed | 数据已经安全的保存在本地数据库中                |
 | ------------- | ------------------------------- |
@@ -268,7 +268,7 @@ $ git fetch [remote-name]
 
 推送到远程仓库
 
-要满足以下条件才能推送成功：1.有所克隆服务器的写入权限；2.之前没有人推送过。否则必须将其他同时推送的人的工作拉取下来并将其合并进你的工作后才能推送。
+要满足以下条件才能推送成功：1.有所克隆服务器的写入权限；2.之前没有人推送过。否则必须将其他同时推送的人的工作拉取下来并将其合并进你的工作后才能推送。【remote-name 则为天价远程仓库时定义的shortname，第一次创建时必须创建shortname和对应url后，才可顺利使用push命令】
 
 ```
 $ git push [remote-name] [branch-name]
@@ -365,3 +365,28 @@ $ git config --global alias.unstage 'reset HEAD --'
 $ git config --global alias.last 'log -1 HEAD'h
 ```
 
+##N.自我实践##
+
+创建新的仓库并将文件推送至新仓库，<括号内的内容为用户自定义>
+
+```
+//全局的初始
+$ git config --global user.name "<John Doe>"
+$ git config --global user.email <johndoe@example.com>
+$ git config --list 
+
+//本地文件夹的初始，创建git并提交修改文件
+$ git init 
+$ git add <filename>
+$ git commit -m '<Task 1>'
+$ git status
+
+//创建新仓库，并将本地git版本推送至新仓库
+//前提是在远程仓库中已新创建TrainingPlanStudy此仓库
+$ git remote add <tps> 
+<https://github.com/MyNameIsAngela/TrainingPlanStudy>
+$ git remote show <tps>
+$ git push <tps> <master>
+
+//补充说明：即使这是从本地推送至远端服务器，但本地图形界面并不会显示此仓库，若想本地图形界面显示，则需从远端服务器克隆。
+```
